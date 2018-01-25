@@ -1,0 +1,20 @@
+
+/* About */
+
+.about-us {
+    background: #f2f2f2 url("../images/about-us.png") no-repeat right;
+    background-size: 800px;
+}
+
+.about-us-logo img {
+    width: 700px;
+}
+
+.developer-text {
+    float: left;
+}
+
+.developer-name {
+    float: left;
+    margin-left: 20px;
+}

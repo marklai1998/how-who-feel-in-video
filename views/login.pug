@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div.vertical-align.login-outer
+        div.login-pannel.nopadding
+            div.login-form-header
+                img.login-logo(src="/images/logo.png")
+                a #{title}
+                div.clearfix
+            div.login-form-main
+                form(action="login" method="post" style="margin: auto;padding: 0;background-color: initial;")
+                    button.login-button
+                        i.fa.fa-arrow-left(aria-hidden="true")
+                    span.login-field
+                        input.inputText(type=type.toLowerCase() maxlength="23" name=field.toLowerCase() required)
+                        span.floating-label #{field}
+                    div.clearfix

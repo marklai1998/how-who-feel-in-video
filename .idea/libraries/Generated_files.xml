@@ -1,0 +1,66 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/app.js" />
+        <item url="file://$PROJECT_DIR$/dist/bin/www.js" />
+        <item url="file://$PROJECT_DIR$/dist/db/videos.js" />
+        <item url="file://$PROJECT_DIR$/dist/function.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/S3_file.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/get_duration.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/local_file.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/upload_to_S3.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/upload_to_local.js" />
+        <item url="file://$PROJECT_DIR$/dist/function/upload_video.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/analyzer.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/analyzer_old.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/bootstrap.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/bootstrap.min.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/external/jquery/jquery.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/jquery-ui.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/jquery-ui.min.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/jquery.resize.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/upload.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/video_playback.js" />
+        <item url="file://$PROJECT_DIR$/dist/public/javascripts/videoplayback.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/analyzer.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/login.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/users.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/videos.js" />
+        <item url="file://$PROJECT_DIR$/dist/routes/watcher.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/routes/analyzer.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/videoplayback.js" />
+      <root url="file://$PROJECT_DIR$/dist/app.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/video_playback.js" />
+      <root url="file://$PROJECT_DIR$/dist/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/dist/bin/www.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/analyzer_old.js" />
+      <root url="file://$PROJECT_DIR$/dist/function.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/upload_to_S3.js" />
+      <root url="file://$PROJECT_DIR$/dist/db/videos.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/upload_video.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/analyzer.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/jquery.resize.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/upload_to_local.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/get_duration.js" />
+      <root url="file://$PROJECT_DIR$/dist/routes/login.js" />
+      <root url="file://$PROJECT_DIR$/dist/routes/videos.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/bootstrap.min.js" />
+      <root url="file://$PROJECT_DIR$/dist/routes/users.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/bootstrap.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/local_file.js" />
+      <root url="file://$PROJECT_DIR$/dist/function/S3_file.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/jquery-ui.min.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/upload.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/external/jquery/jquery.js" />
+      <root url="file://$PROJECT_DIR$/dist/routes/watcher.js" />
+      <root url="file://$PROJECT_DIR$/dist/public/javascripts/jquery-ui-1.12.1.custom/jquery-ui.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

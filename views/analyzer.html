@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/bootstrap.css"><link rel="stylesheet" href="/stylesheets/bootstrap-grid.css"><link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.css"><link rel="stylesheet" href="/stylesheets/nav.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani"><script src="https://code.jquery.com/jquery-1.9.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script><script src="/javascripts/bootstrap.min.js"></script><script>$(document).ready(function () {
+    $(".menu").find("a").click(function () {
+        var href = $(this).attr("href");
+        hide_menu();
+        setTimeout(function () {
+            window.location = href
+        }, 300);
+        return false;
+    });
+    $('.db-click').click(function () {
+        hide_menu();
+        return false;
+    }).dblclick(function () {
+        window.location = this.href;
+        return false;
+    });
+    $(".logo").click(function () {
+        const body = $("#body");
+        if (body.hasClass("hide-overflow")) {
+            setTimeout(
+                function () {
+                    body.removeClass("hide-overflow");
+                }, 500);
+        } else {
+            body.addClass("hide-overflow");
+        }
+        $(".content").toggleClass("show-menu");
+        $(".title").find("h3.main_title").toggleClass("show-menu-title");
+    });
+    $(".content").click(function () {
+        hide_menu();
+    });
+    if ("") {
+        const message = $(".message");
+        message.addClass("messagevisible");
+        setTimeout(
+            function () {
+                message.removeClass("messagevisible");
+            }, 2000);
+    }
+});
+function hide_menu() {
+    if ($("#body").hasClass("hide-overflow")) {
+        setTimeout(
+            function () {
+                body.removeClass("hide-overflow");
+            }, 500);
+    }
+    $(".content").removeClass("show-menu");
+    $(".title").find("h3.main_title").removeClass("show-menu-title");
+}</script></head></html><body id="body"><div class="message"></div><div class="header" id="header"><img class="logo" src="/images/logo.png"><ul class="d-block"><li class="clearfix"></li><li class="right">| &nbsp<a href="/logout"><i class="fa fa-sign-out"></i></a></li><li class="right"><a></a></li></ul></div><div class="title"><div class="icon-bg"></div><h3 class="main_title"></h3></div><div class="menu"><ul><li><a href="/">Dashboard</a></li><li><a href="/videos">Videos</a></li><li><a href="/users">Users</a></li><li><a href="/about">About</a></li></ul></div><div class="content"><div class="container-fluid"><div class="row"><div class="col-12 col-xl-7"><div id="video-bg"><div id="overlay-outer"><span>id:</span><span id="id"></span></div><video id="video"><source src="/upload/undefined/undefined_originalundefined" type="video/mp4"><Your>browser does not support the video tag.</Your></video></div><div id="video-controls"><div class="right-control"><i class="fa fa-play" id="play-pause"></i><i class="fa fa-volume-up" id="mute"></i><input type="range" id="volume-bar" min="0" max="1" step="any" value="1" orient="vertical"></div><div class="time-line"><input id="seek-bar" type="range" value="0" min="0" step="any" max="100"></div><div id="time"><pre id="current">00:00:000</pre><pre id="duration">/ 00:00:000</pre></div></div></div><div class="col-12- col-xl-5"><ul class="nav nav-pills" id="pills-tab" role="tablist"><li class="nav-item"><a class="tab-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">Real time</a></li><li class="nav-item"><a class="tab-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true">Statistics</a></li></ul><div class="tab-content" id="pills-tabContent"><div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><h5>Peoples</h5><div class="peoples_title row"><div class="col-6"><h6>Boy</h6></div><div class="col-6"><h6>Girl</h6></div></div><div class="peoples row"><div class="col-6"><ul><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li></ul></div><div class="col-6"><ul><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li></ul></div></div></div><div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><h5>Peoples</h5><div class="peoples"><ul><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li><li>160008410</li></ul></div></div></div></div></div></div></div><script src="/javascripts/analyzer.js"></script></body>

@@ -1,0 +1,578 @@
+/* Global */
+
+body {
+    min-width: 710px;
+    -webkit-transition-property: width, height, line-height, margin-bottom; /* Safari */
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-property: width, height, line-height, margin-bottom;
+    transition-duration: 0.3s;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+div, canvas, video, table {
+    -webkit-transition-property: min-width, min-height, max-width, max-height, top, bottom, left, right, width, height, line-height, margin-bottom, margin-left, position, transform; /* Safari */
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-property: min-width, min-height, max-width, max-height, top, bottom, left, right, width, height, line-height, margin-bottom, margin-left, position, transform;
+    transition-duration: 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul.styled li {
+    padding: 10px;
+}
+
+ul.styled li:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+h5 {
+    display: inline-block;
+    margin-bottom: 10px !important;
+}
+
+div::-webkit-scrollbar {
+    width: 12px;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+}
+
+a, td a {
+    color: #494949;
+    text-decoration: none;
+    -webkit-transition-property: color, background-color;
+    -webkit-transition-duration: 0.3s;
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+}
+
+a.button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: #e2e2e2;
+    background-color: #00609b;
+}
+
+i {
+    color: #494949;
+    -webkit-transition-property: color, background-color;
+    -webkit-transition-duration: 0.3s;
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+}
+
+i:hover {
+    color: #494949;
+}
+
+input[type=text], input[type=password] {
+    background-color: #f2f2f2;
+    border: none;
+    border-left: 5px solid #0072B2;
+    border-radius: 2px;
+    padding: 10px;
+    height: 30px;
+    font-size: 1.2rem;
+    width: 230px;
+    margin-right: 20px;
+}
+
+input[type=submit], .button {
+    color: #FFF;
+    border: none;
+    background-color: #0072B2;
+    border-radius: 3px;
+    margin-right: 20px;
+    padding: 2px 10px;
+    -webkit-transition-property: color, background-color;
+    -webkit-transition-duration: 0.3s;
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+}
+
+input[type=submit]:hover, .button:hover {
+    cursor: pointer;
+    background-color: #00609b;
+}
+
+input[type=range][orient=vertical] {
+    -webkit-transform: rotate(-90deg);
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 11px 0;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: #f2f2f2;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 25px;
+    width: 11px;
+    border-radius: 3px;
+    background: #1b509b;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -11px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #f2f2f2;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: #f2f2f2;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 25px;
+    width: 11px;
+    border-radius: 3px;
+    background: #1b509b;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: #f2f2f2;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #000000;
+    border-radius: 6px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #1a1a1a;
+    border-radius: 6px;
+}
+
+input[type=range]::-ms-thumb {
+    height: 25px;
+    width: 11px;
+    border-radius: 3px;
+    background: #1b509b;
+    cursor: pointer;
+    height: 3px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #1a1a1a;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #676767;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    margin-bottom: 0;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f2f2f2;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 3px;
+}
+
+.slider.round:before {
+    border-radius: 3px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+form:not(.nostyle) {
+    background-color: #FFF;
+    border-radius: 3px;
+    padding: 10px 20px;
+    margin: 20px 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.inputfile + label {
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    margin: 10px 10px 10px 0;
+    padding: 3px 10px 0 15px;
+    min-width: 200px;
+    position: relative;
+}
+
+.inputfile + label span {
+    z-index: 5;
+    position: relative;
+}
+
+.inputfile + label .progress-outer {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
+    background-color: #373737;
+    cursor: pointer;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+}
+
+.progress-bar {
+    color: #FFF;
+    border: none;
+    background-color: #2196F3;
+    border-radius: 0 3px 3px 0;
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 0s;
+    transition-property: width;
+    transition-duration: 0s;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #2196F3;
+    padding: 10px 20px;
+    color: #FFF;
+}
+
+table th:first-child {
+    border-radius: 3px 0 0 0;
+}
+
+table th:last-child {
+    border-radius: 0 3px 0 0;
+}
+
+table td {
+    background-color: #FFF;
+    -webkit-transition-property: background-color; /* Safari */
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+table td div {
+    padding: 10px 20px;
+}
+
+table tr:last-child td:first-child {
+    border-radius: 0 0 0 3px;
+}
+
+table tr:last-child td:last-child {
+    border-radius: 0 0 3px 0;
+}
+
+table tr:hover td {
+    background-color: #fbfbfb;
+}
+
+table td.min-width {
+    width: 30px;
+}
+
+table td.max-width {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table td.label {
+    padding: 0;
+}
+
+table td a:hover {
+    color: #494949;
+    text-decoration: none;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.form-field {
+    position: relative;
+}
+
+.form-field input {
+    margin: 10px 20px 10px 0;
+}
+
+.inputText {
+    font-size: 14px;
+    width: 200px;
+    height: 25px;
+}
+
+.floating-label {
+    position: absolute;
+    color: #0072B2;
+    pointer-events: none;
+    left: 15px;
+    top: 3px;
+    transition: 0.2s ease all;
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+    top: 7px;
+    left: 160px;
+    font-size: 15px;
+}
+
+.vertical-align {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vertical-align.login-outer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 30px;
+}
+
+.content {
+    position: relative;
+    left: 0px;
+    width: 100%;
+    padding: 15px;
+    min-height: calc(100vh - 107px);
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    transition-property: left;
+    transition-duration: 0.3s;
+}
+
+.nav {
+    margin-top: 22px;
+}
+
+.tab-link {
+    padding: 8px 20px;
+    color: #494949;
+    text-decoration: none;
+}
+
+.tab-link:hover {
+    text-decoration: none;
+    color: #494949;
+}
+
+.tab-link.active {
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #494949;
+}
+
+.tab-link.active {
+    border-top: 2px solid #0072B2;
+}
+
+.tab-content {
+    background-color: #FFF;
+    padding: 10px;
+    min-width: 100%;
+    border-radius: 0 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 90px;
+}
+
+/* Login */
+
+.login-logo {
+    position: absolute;
+    pointer-events: none;
+    float: left;
+    top: -32px;
+    z-index: 2;
+    width: 100px;
+}
+
+.login-pannel {
+    border-radius: 3px;
+    background-color: #FFF;
+    width: 400px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-header {
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    background-color: #0072B2;
+    color: #FFF;
+    padding: 7px 20px;
+    font-size: 25px;
+}
+
+.login-form-header a {
+    float: none;
+    margin-left: 110px;
+}
+
+.login-form-main {
+    padding: 0 25px;
+}
+
+.login-form-main form {
+    box-shadow: none;
+}
+
+.login-field {
+    position: relative;
+    float: right;
+    margin: 25px 0;
+}
+
+.login-button {
+    width: 50px;
+    height: 195px;
+    margin-left: 20px;
+    position: absolute;
+    top: -45px;
+    z-index: 1;
+    -webkit-clip-path: polygon(0 90%, 0 8%, 50% 0, 100% 8%, 100% 90%, 51% 100%);
+    clip-path: polygon(0 90%, 0 8%, 50% 0, 100% 8%, 100% 90%, 51% 100%);
+    background: #005b8e;
+    border: none;
+}
+
+.login-button:hover {
+    background: #0081bf;
+}
+
+.login-button i {
+    margin-top: 110px;
+    color: #fff;
+}
+
+.tab-pane {
+    padding: 10px 10px;
+}
+
+.lex {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 250px;
+    background-color: #343434;
+    z-index: 100;
+}
+
+.lex .header {
+    padding: 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+.lex .body {
+    height: 180px;
+    overflow-y: scroll;
+}
+
+.lex input {
+
+}

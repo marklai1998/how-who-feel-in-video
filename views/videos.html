@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/bootstrap.css"><link rel="stylesheet" href="/stylesheets/bootstrap-grid.css"><link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani"><script src="https://code.jquery.com/jquery-1.9.1.min.js"></script><script>$(document).ready(function () {
+    $("a").click(function () {
+        var href = $(this).attr("href");
+        $(".content").removeClass("show-menu");
+        $(".title").find("h3").removeClass("show-menu-title");
+        setTimeout(function () {
+            window.location = href
+        }, 500);
+        return false;
+    });
+    $(".logo").click(function () {
+        const body = $("#body");
+        if (body.hasClass("hide-overflow")) {
+            setTimeout(
+                function () {
+                    body.removeClass("hide-overflow");
+                }, 500);
+        } else {
+            body.addClass("hide-overflow");
+        }
+        $(".content").toggleClass("show-menu");
+        $(".title").find("h3").toggleClass("show-menu-title");
+    });
+    if ("") {
+        const message = $(".message");
+        message.addClass("messagevisible");
+        setTimeout(
+            function () {
+                message.removeClass("messagevisible");
+            }, 2000);
+    }
+});</script></head></html><body id="body"><div class="message"></div><div class="header" id="header"><img class="logo" src="images/logo.png"><ul class="d-block"><li class="clearfix"></li><li class="right">| &nbsp<a href="/logout"><i class="fa fa-sign-out"></i></a></li><li class="right"><a></a></li></ul></div><div class="title"><div class="icon-bg"></div><h3></h3></div><div class="menu"><ul><li><a href="/">Dashboard</a></li><li><a href="/videos">Videos</a></li><li><a href="/users">Users</a></li><li><a href="/about">About</a></li></ul></div><div class="content"><script src="/javascripts/upload.js"></script><script>$(document).ready(function () {
+    $('.inputfile').on('change', function (e) {
+        var fileName = '';
+
+        if (this.files && this.files.length > 1)
+            fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+        else if (e.target.value)
+            fileName = e.target.value.split('\\').pop();
+
+        if (fileName)
+            $(this).next('label').find('span').html(fileName);
+        else
+            $(this).next('label').html($(this).next('label').html());
+    });
+});</script><form method="post" encType="multipart/form-data"><input class="inputfile" type="file" name="video" id="video" data-multiple-caption="{count} files selected" accept=".mp4,.mov" multiple><label for="video"><span>Choose a file</span><div class="progress-outer"><div class="progress"><div class="progress-bar" role="progressbar"></div></div></div></label><span class="button submit">Submit</span></form><h3>No video currently</h3></div></body>

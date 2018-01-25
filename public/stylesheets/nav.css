@@ -1,0 +1,153 @@
+/* Header */
+
+.show-menu {
+    left: 150px;
+}
+
+.show-menu-title {
+    margin-left: 170px !important;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #2196F3;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    color: #fff;
+}
+
+.header i{
+    color: #FFF;
+}
+
+.header ul {
+    margin: auto 0;
+    display: inline-block;
+    padding: 12px 0 10px 130px;
+}
+
+.header li {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+li.right {
+    float: right;
+}
+
+.analyzer_menu {
+    float: right;
+}
+
+.title {
+    max-height: 116px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    z-index: 3;
+}
+
+.title h3.main_title {
+    padding: 15px 0;
+    display: inline-block;
+    margin-left: 130px;
+    -webkit-transition-property: margin-left;
+    -webkit-transition-duration: 0.3s;
+    transition-property: margin-left;
+    transition-duration: 0.3s;
+}
+
+.title .analyzer_menu {
+    background-color: #f2f2f2;
+    border-left: 5px solid #0072B2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.title .analyzer_menu h3 {
+    padding: 15px;
+    display: inline-block;
+    -webkit-transition-property: margin-left;
+    -webkit-transition-duration: 0.3s;
+    transition-property: margin-left;
+    transition-duration: 0.3s;
+}
+
+.icon-bg {
+    overflow-y: hidden;
+    padding: 0 10px 10px 10px;
+    margin: 0 -10px;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+}
+
+.icon-bg div {
+
+    z-index: 5;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-top: 19px solid #fff;
+
+    -webkit-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
+
+.menu {
+    position: absolute;
+    padding-top: 35px;
+    width: 200px;
+    min-height: calc(100vh - 107px);
+    background-color: #FFF;
+}
+
+.menu li.active {
+    background-color: #f2f2f2;
+    border-left: 3px solid #0072B2;
+}
+
+.menu li.active a {
+    color: #3c3c3c;
+}
+
+.menu li a {
+    color: rgba(0, 0, 0, 0.15);
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.menu li:not(.active):hover {
+    background-color: #f2f2f2;
+}
+
+.menu li:not(.active):hover a {
+
+    color: #3c3c3c;
+}
+
+.message {
+    color: #fff;
+    background-color: #0072B2;
+    text-align: center;
+    overflow: hidden;
+    line-height: 0px;
+}
+
+.messagevisible {
+    line-height: 35px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/bootstrap.css"><link rel="stylesheet" href="/stylesheets/bootstrap-grid.css"><link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani"><script src="https://code.jquery.com/jquery-1.9.1.min.js"></script><script>$(document).ready(function () {
+    $("a").click(function () {
+        var href = $(this).attr("href");
+        $(".content").removeClass("show-menu");
+        $(".title").find("h3").removeClass("show-menu-title");
+        setTimeout(function () {
+            window.location = href
+        }, 500);
+        return false;
+    });
+    $(".logo").click(function () {
+        const body = $("#body");
+        if (body.hasClass("hide-overflow")) {
+            setTimeout(
+                function () {
+                    body.removeClass("hide-overflow");
+                }, 500);
+        } else {
+            body.addClass("hide-overflow");
+        }
+        $(".content").toggleClass("show-menu");
+        $(".title").find("h3").toggleClass("show-menu-title");
+    });
+    if ("") {
+        const message = $(".message");
+        message.addClass("messagevisible");
+        setTimeout(
+            function () {
+                message.removeClass("messagevisible");
+            }, 2000);
+    }
+});</script></head></html><body id="body"><div class="message"></div><div class="header" id="header"><img class="logo" src="/images/logo.png"><ul class="d-block"><li class="clearfix"></li><li class="right">| &nbsp<a href="/logout"><i class="fa fa-sign-out"></i></a></li><li class="right"><a></a></li></ul></div><div class="title"><div class="icon-bg"></div><h3></h3></div><div class="menu"><ul><li><a href="/">Dashboard</a></li><li><a href="/videos">Videos</a></li><li><a href="/users">Users</a></li><li><a href="/about">About</a></li></ul></div></body>
