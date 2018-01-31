@@ -1,16 +1,14 @@
 extends layout
 block nav
     div.header#header
-        img.logo(src="/images/logo.png")
+        img.logo(src="/images/logo.svg")
         ul.d-block
             li.clearfix
             li.right
-                .
-                    | &nbsp
                 a(href="/logout")
                     i.fa.fa-sign-out
             li.right
-                a #{username}
+                a #{username} &nbsp|
     div.title
         h3.main_title #{title}
         if title === "Analyzer"

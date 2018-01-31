@@ -5,6 +5,7 @@ html
         link(rel='stylesheet', href='/stylesheets/bootstrap.css')
         link(rel='stylesheet', href='/stylesheets/bootstrap-grid.css')
         link(rel='stylesheet', href='/stylesheets/font-awesome-4.7.0/css/font-awesome.css')
+        link(rel='stylesheet', href='/stylesheets/login.css')
         link(rel='stylesheet', href='/stylesheets/nav.css')
         if title === "Videos"
             link(rel='stylesheet', href='/stylesheets/videos.css')
@@ -21,6 +22,14 @@ html
         script(src="/javascripts/jquery.resize.js")
         script.
             $(document).ready(function () {
+                if ("#{show_message}") {
+                    const message = $(".message");
+                    message.addClass("visible");
+                    setTimeout(
+                        function () {
+                            message.removeClass("visible");
+                        }, 2000);
+                }
                 $(".menu").find("a").click(function () {
                     var href = $(this).attr("href");
                     hide_menu();
@@ -37,43 +46,18 @@ html
                     return false;
                 });
                 $(".logo").click(function () {
-                    const body = $("#body");
-                    if (body.hasClass("hide-overflow")) {
-                        setTimeout(
-                            function () {
-                                body.removeClass("hide-overflow");
-                            }, 500);
-                    } else {
-                        body.addClass("hide-overflow");
-                    }
                     $(".content").toggleClass("show-menu");
-                    $(".title").find("h3.main_title").toggleClass("show-menu-title");
+                    $(".main_title").toggleClass("show-menu");
                 });
                 $(".content").click(function () {
                     hide_menu();
                 });
-                if ("#{show_message}") {
-                    const message = $(".message");
-                    message.addClass("messagevisible");
-                    setTimeout(
-                        function () {
-                            message.removeClass("messagevisible");
-                        }, 2000);
-                }
             });
             function hide_menu() {
-                if ($("#body").hasClass("hide-overflow")) {
-                    setTimeout(
-                        function () {
-                            body.removeClass("hide-overflow");
-                        }, 500);
-                }
                 $(".content").removeClass("show-menu");
-                $(".title").find("h3.main_title").removeClass("show-menu-title");
+                $(".main_title").removeClass("show-menu");
             }
 body#body
-    div.message
-        .
-            #{message}
+    div.message #{message}
     block nav
     block content

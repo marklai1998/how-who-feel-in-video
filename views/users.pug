@@ -1,40 +1,41 @@
 extends nav
 
 block content
-    div.content
-        form(action="users" method="post")
-            span.form-field
-                input.inputText(type="text" maxlength="23" name="username" required)
-                span.floating-label Username
-            span.form-field
-                input.inputText(type="password" maxlength="23" name="password" required)
-                span.floating-label Password
-            input(type="submit" value="Submit")
-        div.col-12
-            table
-                thead
-                    tr
-                        th
-                        th id
-                        th Username
-                        th Password (SHA256)
-                        th Last Login
-                        th Created At
-                tbody
-                    if users
-                        each user in users
-                            tr
-                                td(nowarp)
-                                    a(href="/users/delete/"+ user.username)
-                                        div
-                                            i.fa.fa-times
-                                td(nowrap)
-                                    div= user._id
-                                td(nowrap)
-                                    div= user.username
-                                td.max-width(nowrap)
-                                    div= user.password
-                                td(nowrap)
-                                    div= user.updated_at.toDateString()
-                                td(nowarp)
-                                    div= user.created_at.toDateString()
+    div.content-outer
+        div.content
+            form(action="users" method="post")
+                span.form-field
+                    input.inputText(type="text" maxlength="23" name="username" required)
+                    span.floating-label Username
+                span.form-field
+                    input.inputText(type="password" maxlength="23" name="password" required)
+                    span.floating-label Password
+                input(type="submit" value="Submit")
+            div.col-12
+                table
+                    thead
+                        tr
+                            th
+                            th id
+                            th Username
+                            th Password (SHA256)
+                            th Last Login
+                            th Created At
+                    tbody
+                        if users
+                            each user in users
+                                tr
+                                    td(nowarp)
+                                        a(href="/users/delete/" + user.username)
+                                            div
+                                                i.fa.fa-times
+                                    td(nowrap)
+                                        div= user._id
+                                    td(nowrap)
+                                        div= user.username
+                                    td.max-width(nowrap)
+                                        div= user.password
+                                    td(nowrap)
+                                        div= user.updated_at.toDateString()
+                                    td(nowarp)
+                                        div= user.created_at.toDateString()

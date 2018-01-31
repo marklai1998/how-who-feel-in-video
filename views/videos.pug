@@ -1,134 +1,135 @@
 extends nav
 block content
-    div.content
-        script(src="/javascripts/upload.js")
+    div.content-outer
+        div.content
+            script(src="/javascripts/upload.js")
+            script.
+                $(document).ready(function () {
+                    $('.inputfile').on('change', function (e) {
+                        var fileName = '';
+
+                        if (this.files && this.files.length > 1)
+                            fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                        else if (e.target.value)
+                            fileName = e.target.value.split('\\').pop();
+
+                        if (fileName)
+                            $(this).next('label').find('span').html(fileName);
+                        else
+                            $(this).next('label').html($(this).next('label').html());
+                    });
+                });
+            div.video-detail
+                h3#detail_name
+                div.video-detail-inner
+                    img#detail_thumbnail
+                    span ID :
+                    span#detail_id
+                    br
+                    span Type :
+                    span#detail_ext
+                    br
+                    span Size :
+                    span#detail_size
+                    br
+                    span Duration :
+                    span#detail_duration
+                    br
+                    span Dimension :
+                    span#detail_dimension
+                    br
+                    span Date created :
+                    span#detail_create_at
+            form(method="post" encType="multipart/form-data")
+                input(type="file" name="video" id="video" class="inputfile" data-multiple-caption="{count} files selected" accept=".mp4,.mov" multiple)
+                label(for="video")
+                    span Choose a file
+                    div.progress-outer
+                        div.progress
+                            div.progress-bar(role="progressbar")
+                span.button.submit Submit
+            if videos.length > 0
+                div.col-12
+                    form.nostyle(method="post" encType="multipart/form-data")
+                        table
+                            thead
+                                tr
+                                    th
+                                    th
+                                    th File name
+                                    th size
+                                    th Date created
+                            tbody
+                                each video in videos
+                                    tr
+                                        td.min-width
+                                            div.td_clickable
+                                                input(type="checkbox" name="collection" value=video._id)
+                                        td.min-width
+                                            a(href="/videos/delete/" + video._id)
+                                                div
+                                                    i.fa.fa-times
+                                        td.max-width
+                                            a.db-click.show-detail(href="/analyzer/" + video._id)
+                                                div.td_clickable
+                                                    span= video.file_name + video.file_type
+                                        td.show-detail#size
+                                            a.db-click.show-detail(href="/analyzer/" + video._id)
+                                                div.td_clickable
+                                                    span= video.size
+                                        td.show-detail#create_at
+                                            a.db-click.show-detail(href="/analyzer/" + video._id)
+                                                div.td_clickable
+                                                    span= video.created_at.toDateString()
+                                        td.d-none#name
+                                            span= video.file_name
+                                        td.d-none#ext
+                                            span= video.file_type
+                                        td.d-none#id
+                                            span= video.id
+                                        td.d-none#duration
+                                            span= video.duration
+                                        td.d-none#dimension
+                                            span= video.dimension
+            else
+                div.col-12
+                    h3 No video currently
         script.
-            $(document).ready(function () {
-                $('.inputfile').on('change', function (e) {
-                    var fileName = '';
+            $('.show-detail').click(function () {
+                event.preventDefault();
+                $('.video-detail').fadeIn("fast");
 
-                    if (this.files && this.files.length > 1)
-                        fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                    else if (e.target.value)
-                        fileName = e.target.value.split('\\').pop();
+                let name = $(this).closest('tr').children('#name').text();
+                let ext = $(this).closest('tr').children('#ext').text();
+                let id = $(this).closest('tr').children('#id').text();
+                let duration = $(this).closest('tr').children('#duration').text();
+                let dimension = $(this).closest('tr').children('#dimension').text();
+                let size = $(this).closest('tr').children('#size').text();
+                let create_at = $(this).closest('tr').children('#create_at').text();
+                let path = "/upload/" + id + "/thumbnail.png";
 
-                    if (fileName)
-                        $(this).next('label').find('span').html(fileName);
-                    else
-                        $(this).next('label').html($(this).next('label').html());
+                $("#detail_name").fadeOut("fast", function () {
+                    $("#detail_name").text(name).fadeIn("fast");
+                });
+                $("#detail_thumbnail").fadeOut("fast", function () {
+                    $("#detail_thumbnail").attr("src", path).fadeIn("fast");
+                });
+                $("#detail_id").fadeOut("fast", function () {
+                    $("#detail_id").text(" " + id).fadeIn("fast");
+                });
+                $("#detail_ext").fadeOut("fast", function () {
+                    $("#detail_ext").text(" " + ext.substring(1)).fadeIn("fast");
+                });
+                $("#detail_size").fadeOut("fast", function () {
+                    $("#detail_size").text(" " + size).fadeIn("fast");
+                });
+                $("#detail_duration").fadeOut("fast", function () {
+                    $("#detail_duration").text(" " + duration).fadeIn("fast");
+                });
+                $("#detail_dimension").fadeOut("fast", function () {
+                    $("#detail_dimension").text(" " + dimension).fadeIn("fast");
+                });
+                $("#detail_create_at").fadeOut("fast", function () {
+                    $("#detail_create_at").text(" " + create_at).fadeIn("fast");
                 });
             });
-        div.video-detail
-            h3#detail_name
-            div.video-detail-inner
-                img#detail_thumbnail
-                span ID :
-                span#detail_id
-                br
-                span Type :
-                span#detail_ext
-                br
-                span Size :
-                span#detail_size
-                br
-                span Duration :
-                span#detail_duration
-                br
-                span Dimension :
-                span#detail_dimension
-                br
-                span Date created :
-                span#detail_create_at
-        form(method="post" encType="multipart/form-data")
-            input(type="file" name="video" id="video" class="inputfile" data-multiple-caption="{count} files selected" accept=".mp4,.mov" multiple)
-            label(for="video")
-                span Choose a file
-                div.progress-outer
-                    div.progress
-                        div.progress-bar(role="progressbar")
-            span.button.submit Submit
-        if videos.length > 0
-            div.col-12
-                form.nostyle(method="post" encType="multipart/form-data")
-                    table
-                        thead
-                            tr
-                                th
-                                th
-                                th File name
-                                th size
-                                th Date created
-                        tbody
-                            each video in videos
-                                tr
-                                    td.min-width
-                                        div.td_clickable
-                                            input(type="checkbox" name="collection" value=video._id)
-                                    td.min-width
-                                        a(href="/videos/delete/" + video._id)
-                                            div
-                                                i.fa.fa-times
-                                    td.max-width
-                                        a.db-click.show-detail(href="/analyzer/" + video._id)
-                                            div.td_clickable
-                                                span= video.file_name + video.file_type
-                                    td.show-detail#size
-                                        a.db-click.show-detail(href="/analyzer/" + video._id)
-                                            div.td_clickable
-                                                span= video.size
-                                    td.show-detail#create_at
-                                        a.db-click.show-detail(href="/analyzer/" + video._id)
-                                            div.td_clickable
-                                                span= video.created_at.toDateString()
-                                    td.d-none#name
-                                        span= video.file_name
-                                    td.d-none#ext
-                                        span= video.file_type
-                                    td.d-none#id
-                                        span= video.id
-                                    td.d-none#duration
-                                        span= video.duration
-                                    td.d-none#dimension
-                                        span= video.dimension
-        else
-            div.col-12
-                h3 No video currently
-    script.
-        $('.show-detail').click(function () {
-            event.preventDefault();
-            $('.video-detail').fadeIn("fast");
-
-            let name = $(this).closest('tr').children('#name').text();
-            let ext = $(this).closest('tr').children('#ext').text();
-            let id = $(this).closest('tr').children('#id').text();
-            let duration = $(this).closest('tr').children('#duration').text();
-            let dimension = $(this).closest('tr').children('#dimension').text();
-            let size = $(this).closest('tr').children('#size').text();
-            let create_at = $(this).closest('tr').children('#create_at').text();
-            let path = "/upload/" + id + "/thumbnail.png";
-
-            $("#detail_name").fadeOut("fast", function () {
-                $("#detail_name").text(name).fadeIn("fast");
-            });
-            $("#detail_thumbnail").fadeOut("fast", function () {
-                $("#detail_thumbnail").attr("src", path).fadeIn("fast");
-            });
-            $("#detail_id").fadeOut("fast", function () {
-                $("#detail_id").text(" " + id).fadeIn("fast");
-            });
-            $("#detail_ext").fadeOut("fast", function () {
-                $("#detail_ext").text(" " + ext.substring(1)).fadeIn("fast");
-            });
-            $("#detail_size").fadeOut("fast", function () {
-                $("#detail_size").text(" " + size).fadeIn("fast");
-            });
-            $("#detail_duration").fadeOut("fast", function () {
-                $("#detail_duration").text(" " + duration).fadeIn("fast");
-            });
-            $("#detail_dimension").fadeOut("fast", function () {
-                $("#detail_dimension").text(" " + dimension).fadeIn("fast");
-            });
-            $("#detail_create_at").fadeOut("fast", function () {
-                $("#detail_create_at").text(" " + create_at).fadeIn("fast");
-            });
-        });

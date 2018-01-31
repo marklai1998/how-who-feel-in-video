@@ -1,228 +1,229 @@
 extends nav
 block content
-    div.content
-        script.
-            $(document).ready(function () {
-                $('.inputfile').on('change', function (e) {
-                    var fileName = '';
+    div.content-outer
+        div.content
+            script.
+                $(document).ready(function () {
+                    $('.inputfile').on('change', function (e) {
+                        var fileName = '';
 
-                    if (this.files && this.files.length > 1)
-                        fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                    else if (e.target.value)
-                        fileName = e.target.value.split('\\').pop();
+                        if (this.files && this.files.length > 1)
+                            fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                        else if (e.target.value)
+                            fileName = e.target.value.split('\\').pop();
 
-                    if (fileName)
-                        $(this).next('label').find('span').html(fileName);
-                    else
-                        $(this).next('label').html($(this).next('label').html());
+                        if (fileName)
+                            $(this).next('label').find('span').html(fileName);
+                        else
+                            $(this).next('label').html($(this).next('label').html());
+                    });
                 });
-            });
-        script(src="/javascripts/append_video.js")
-        div.container-fluid
-            div.row
-                div.col-12.col-sm-12.col-lg-8.col-xl-9#video_box
-                    div.append_videos
-                        div#append_video_inner
-                            form(method="post" encType="multipart/form-data")
-                                input(type="file" name="video" id="append_video" class="inputfile" data-multiple-caption="{count} files selected" accept=".mp4,.mov" multiple)
-                                label(for="append_video")
-                                    span Choose a file
-                                    div.progress-outer
-                                        div.progress
-                                            div.progress-bar(role="progressbar")
-                                span.button.submit Submit
-                            each video_name in append_video
-                                div.append_video_bg
-                                    video(muted).append_video
-                                        source(src="/upload/" + id + "/append/" + video_name type="video/mp4" preload="metadata")
-                                        Your browser does not support the video tag.
-                                    i.fa.fa-expand.append_video_pop
-                                    i.fa.fa-volume-off.append_video_mute
-                        div#append_videos_button
-                            i.fa.fa-dot-circle-o(aria-hidden="true")
-                        div.clearfix
-                    div#main_video_bg.show_menu
-                        div#main_video_overlay
-                            div.text
-                                span id:
-                                span#id= id
-                                //div#private
-                                //    label.switch
-                                //        input#private_box(type="checkbox" checked)
-                                //        span.slider.round
-                                //    span Private Mode
-                            div.chart_block_overlay(style="display:none")
-                                span Emotion
-                                canvas#chart_block_overlay(width='400' height='200')
-                            div.advance_setting
-                                div.advance_setting_button
-                                    i.fa.fa-cog(aria-hidden="true")
-                                div.advance_setting_inner(style="display:none")
-                                    label.switch
-                                        input#private_box(type="checkbox" checked)
-                                        span.slider.round
-                                    span.text Private Mode
-                                    label.switch
-                                        input#advance_drawing(type="checkbox" checked)
-                                        span.slider.round
-                                    span.text Advance drawing
-                        video#main_video
-                            source(src="/upload/" + id + "/original" + ext type="video/mp4" preload="metadata")
-                            Your browser does not support the video tag.
-                div.col-6.col-md-5.col-lg-4.col-xl-3
-                    ul.nav.nav-pills#pills-tab(role="tablist")
-                        li.nav-item
-                            a.tab-link.active#pills-home-tab(data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true") Real time
-                        li.nav-item
-                            a.tab-link#pills-profile-tab(data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true") Statistics
-                    div.tab-content#pills-tabContent
-                        div.tab-pane.fade.show.active#pills-home(role="tabpanel" aria-labelledby="pills-home-tab")
-                            h5 Peoples
-                            span.people_count#people_count 0
-                            span.people_count.male_count#male_count 0
-                            span.people_count.female_count#female_count 0
-                            div.total_emotion_graph
-                                canvas(id='emotion_per_frame')
-                        div.tab-pane.fade#pills-profile(role="tabpanel" aria-labelledby="pills-profile-tab")
-                            h5 Peoples
-                            span.people_count#people_count_total 0
-                            div.total_people
-                                div.total_peoples_title
-                                    div.col-6
-                                        h6 Boy
-                                        span#male_count_total 0
-                                    div.col-6
-                                        h6 Girl
-                                        span#female_count_total 0
-                                div.total_peoples
-                                    div
-                                        ul.styled.male
-                                    div
-                                        ul.styled.female
-                                div.clearfix
-            div.row
-                div.col-12
-                    div#main_video_controls
-                        div.left-control
-                            i.fa.fa-play#main_video_play_pause
-                            i.fa.fa-volume-up#main_video_mute
-                            input(type="range" id="volume-bar" min="0" max="1" step="any" value="1" orient="vertical")
-                        div.right-info
-                            div.time
-                                pre#current 00:00:000
-                                pre#duration 00:00:000
-                            div.emotion-color-reference
-                                ul
-                                    li#happy
-                                        span Happy
-                                    li#sad
-                                        span Sad
-                                    li#angry
-                                        span Angry
-                                    li#confused
-                                        span Confused
-                                    li#disgusted
-                                        span Disgusted
-                                    li#surprised
-                                        span Surprised
-                                    li#calm
-                                        span Calm
-                            div.emotion-change-spot-control
-                                ul
-                                    li#change_spot_0
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_1
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_2
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_3
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_4
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_5
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                                    li#change_spot_6
-                                        i.fa.fa-angle-left(aria-hidden="true")
-                                        i.fa.fa-angle-right(aria-hidden="true")
-                        div.time-line
-                            div.seekbar-bg
-                                input#seek-bar(type="range" value="0" min="0" step="any" max="1")
-                            div#total-emotion
-                                div#parent
-                                    canvas(id='total_emotion' height='163')
-            div.row
-                h3.statistics Statistics
-            div.row
-                div.col-6
-                    img.graphs(src="/images/graphs/1.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/2.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/3.png")
-            div.row
-                div.col-6
-                    img.graphs(src="/images/graphs/4.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/5.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/6.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/7.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/8.png")
-            div.row
-                div.col-6
-                    img.graphs(src="/images/graphs/9.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/10.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/11.png")
-            div.row
-                div.col-6
-                    img.graphs(src="/images/graphs/12.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/13.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/14.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/15.png")
-            div.row
-                div.col-6
-                    img.graphs(src="/images/graphs/16.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/17.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/18.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/19.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/20.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/21.png")
-                div.col-6
-                    img.graphs(src="/images/graphs/22.png")
-            //div.lex
-            //    div.header
-            //        h6 Lex
-            //    div.body
-            //        ul.styled
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //            li 160008410
-            //    input(type="text")
-    script(src="/javascripts/analyzer.js")
-    script(src="/javascripts/analyzer_core.js")
-    script(src="/javascripts/analyzer_graph.js")
-    script(src="/javascripts/analyzer_overlays_drawing.js")
+            script(src="/javascripts/append_video.js")
+            div.container-fluid
+                div.row
+                    div.col-12.col-sm-12.col-lg-8.col-xl-9#video_box
+                        div.append_videos
+                            div#append_video_inner
+                                form(method="post" encType="multipart/form-data")
+                                    input(type="file" name="video" id="append_video" class="inputfile" data-multiple-caption="{count} files selected" accept=".mp4,.mov" multiple)
+                                    label(for="append_video")
+                                        span Choose a file
+                                        div.progress-outer
+                                            div.progress
+                                                div.progress-bar(role="progressbar")
+                                    span.button.submit Submit
+                                each video_name in append_video
+                                    div.append_video_bg
+                                        video(muted).append_video
+                                            source(src="/upload/" + id + "/append/" + video_name type="video/mp4" preload="metadata")
+                                            Your browser does not support the video tag.
+                                        i.fa.fa-expand.append_video_pop
+                                        i.fa.fa-volume-off.append_video_mute
+                            div#append_videos_button
+                                i.fa.fa-dot-circle-o(aria-hidden="true")
+                            div.clearfix
+                        div#main_video_bg.show_menu
+                            div#main_video_overlay
+                                div.text
+                                    span id:
+                                    span#id= id
+                                    //div#private
+                                    //    label.switch
+                                    //        input#private_box(type="checkbox" checked)
+                                    //        span.slider.round
+                                    //    span Private Mode
+                                div.chart_block_overlay(style="display:none")
+                                    span Emotion
+                                    canvas#chart_block_overlay(width='400' height='200')
+                                div.advance_setting
+                                    div.advance_setting_button
+                                        i.fa.fa-cog(aria-hidden="true")
+                                    div.advance_setting_inner(style="display:none")
+                                        label.switch
+                                            input#private_box(type="checkbox" checked)
+                                            span.slider.round
+                                        span.text Private Mode
+                                        label.switch
+                                            input#advance_drawing(type="checkbox" checked)
+                                            span.slider.round
+                                        span.text Advance drawing
+                            video#main_video
+                                source(src="/upload/" + id + "/original" + ext type="video/mp4" preload="metadata")
+                                Your browser does not support the video tag.
+                    div.col-6.col-md-5.col-lg-4.col-xl-3
+                        ul.nav.nav-pills#pills-tab(role="tablist")
+                            li.nav-item
+                                a.tab-link.active#pills-home-tab(data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true") Real time
+                            li.nav-item
+                                a.tab-link#pills-profile-tab(data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true") Statistics
+                        div.tab-content#pills-tabContent
+                            div.tab-pane.fade.show.active#pills-home(role="tabpanel" aria-labelledby="pills-home-tab")
+                                h5 Peoples
+                                span.people_count#people_count 0
+                                span.people_count.male_count#male_count 0
+                                span.people_count.female_count#female_count 0
+                                div.total_emotion_graph
+                                    canvas(id='emotion_per_frame')
+                            div.tab-pane.fade#pills-profile(role="tabpanel" aria-labelledby="pills-profile-tab")
+                                h5 Peoples
+                                span.people_count#people_count_total 0
+                                div.total_people
+                                    div.total_peoples_title
+                                        div.col-6
+                                            h6 Boy
+                                            span#male_count_total 0
+                                        div.col-6
+                                            h6 Girl
+                                            span#female_count_total 0
+                                    div.total_peoples
+                                        div
+                                            ul.styled.male
+                                        div
+                                            ul.styled.female
+                                    div.clearfix
+                div.row
+                    div.col-12
+                        div#main_video_controls
+                            div.left-control
+                                i.fa.fa-play#main_video_play_pause
+                                i.fa.fa-volume-up#main_video_mute
+                                input(type="range" id="volume-bar" min="0" max="1" step="any" value="1" orient="vertical")
+                            div.right-info
+                                div.time
+                                    pre#current 00:00:000
+                                    pre#duration 00:00:000
+                                div.emotion-color-reference
+                                    ul
+                                        li#happy
+                                            span Happy
+                                        li#sad
+                                            span Sad
+                                        li#angry
+                                            span Angry
+                                        li#confused
+                                            span Confused
+                                        li#disgusted
+                                            span Disgusted
+                                        li#surprised
+                                            span Surprised
+                                        li#calm
+                                            span Calm
+                                div.emotion-change-spot-control
+                                    ul
+                                        li#change_spot_0
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_1
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_2
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_3
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_4
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_5
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                                        li#change_spot_6
+                                            i.fa.fa-angle-left(aria-hidden="true")
+                                            i.fa.fa-angle-right(aria-hidden="true")
+                            div.time-line
+                                div.seekbar-bg
+                                    input#seek-bar(type="range" value="0" min="0" step="any" max="1")
+                                div#total-emotion
+                                    div#parent
+                                        canvas(id='total_emotion' height='163')
+                div.row
+                    h3.statistics Statistics
+                div.row
+                    div.col-6
+                        img.graphs(src="/images/graphs/1.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/2.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/3.png")
+                div.row
+                    div.col-6
+                        img.graphs(src="/images/graphs/4.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/5.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/6.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/7.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/8.png")
+                div.row
+                    div.col-6
+                        img.graphs(src="/images/graphs/9.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/10.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/11.png")
+                div.row
+                    div.col-6
+                        img.graphs(src="/images/graphs/12.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/13.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/14.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/15.png")
+                div.row
+                    div.col-6
+                        img.graphs(src="/images/graphs/16.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/17.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/18.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/19.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/20.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/21.png")
+                    div.col-6
+                        img.graphs(src="/images/graphs/22.png")
+                //div.lex
+                //    div.header
+                //        h6 Lex
+                //    div.body
+                //        ul.styled
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //            li 160008410
+                //    input(type="text")
+        script(src="/javascripts/analyzer.js")
+        script(src="/javascripts/analyzer_core.js")
+        script(src="/javascripts/analyzer_graph.js")
+        script(src="/javascripts/analyzer_overlays_drawing.js")

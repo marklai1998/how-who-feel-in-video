@@ -1,10 +1,10 @@
 /* Header */
 
-.show-menu {
+.content.show-menu {
     left: 150px;
 }
 
-.show-menu-title {
+.main_title.show-menu {
     margin-left: 170px !important;
 }
 
@@ -14,6 +14,7 @@
     left: 10px;
     z-index: 5;
     cursor: pointer;
+    width: 100px;
 }
 
 .header {
@@ -91,17 +92,16 @@ li.right {
     margin: 0 -10px;
     position: absolute;
     top: 60px;
-    left: 20px;
+    left: 32px;
 }
 
 .icon-bg div {
-
     z-index: 5;
     width: 0;
     height: 0;
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-top: 19px solid #fff;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 15px solid #fff;
 
     -webkit-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.15));
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
@@ -148,6 +148,6 @@ li.right {
     line-height: 0px;
 }
 
-.messagevisible {
+.message.visible {
     line-height: 35px;
 }
