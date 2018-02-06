@@ -149,6 +149,7 @@ const play_video = () => {
 
 const video_goto = (time) => {
     remove_emotion_per_frame_per_ppl_chart();
+    pause_video();
     video[0].currentTime = time + 0.3;
     append_videos.find("video").each(function () {
         this.currentTime = time + 0.3;

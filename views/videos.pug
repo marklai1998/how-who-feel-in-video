@@ -2,26 +2,9 @@ extends nav
 block content
     div.content-outer
         div.content
-            script(src="/javascripts/upload.js")
-            script.
-                $(document).ready(function () {
-                    $('.inputfile').on('change', function (e) {
-                        var fileName = '';
-
-                        if (this.files && this.files.length > 1)
-                            fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                        else if (e.target.value)
-                            fileName = e.target.value.split('\\').pop();
-
-                        if (fileName)
-                            $(this).next('label').find('span').html(fileName);
-                        else
-                            $(this).next('label').html($(this).next('label').html());
-                    });
-                });
             div.video-detail
                 h3#detail_name
-                div.video-detail-inner
+                div.inner
                     img#detail_thumbnail
                     span ID :
                     span#detail_id
@@ -50,7 +33,8 @@ block content
                 span.button.submit Submit
             if videos.length > 0
                 div.col-12
-                    form.nostyle(method="post" encType="multipart/form-data")
+                    form.nostyle(method="post" encType="multipart/form-data" action="/videos/collection")
+                        button.create_collection(type="Submit") Create collection
                         table
                             thead
                                 tr
@@ -86,7 +70,7 @@ block content
                                         td.d-none#ext
                                             span= video.file_type
                                         td.d-none#id
-                                            span= video.id
+                                            span= video._id
                                         td.d-none#duration
                                             span= video.duration
                                         td.d-none#dimension
@@ -94,6 +78,23 @@ block content
             else
                 div.col-12
                     h3 No video currently
+        script(src="/javascripts/upload.js")
+        script.
+            $(document).ready(function () {
+                $('.inputfile').on('change', function (e) {
+                    var fileName = '';
+
+                    if (this.files && this.files.length > 1)
+                        fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                    else if (e.target.value)
+                        fileName = e.target.value.split('\\').pop();
+
+                    if (fileName)
+                        $(this).next('label').find('span').html(fileName);
+                    else
+                        $(this).next('label').html($(this).next('label').html());
+                });
+            });
         script.
             $('.show-detail').click(function () {
                 event.preventDefault();

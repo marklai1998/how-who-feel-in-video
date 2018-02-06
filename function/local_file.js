@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const db_videos = mongoose.model('videos');
 const videos = mongoose.model('videos');
 
 const s3_file = require('./s3_file');
@@ -9,12 +8,12 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const ffmpeg = require('fluent-ffmpeg');
 
-exports.remove = async (id, calllback) => {
+exports.remove = async (id, callback) => {
     try {
         await rimraf('./public/upload/' + id, function (err) {
         });
         await videos.find({_id: id}).remove().exec();
-        await calllback();
+        await callback();
     } catch (err) {
         return err
     }

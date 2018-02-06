@@ -192,7 +192,7 @@ video#main_video {
     height: 35px;
     padding: 1px 15px 0 10px;
     background-color: #FFF;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #f2f2f2;
 }
 
 .time-line input[type=range] {
@@ -630,18 +630,4 @@ video#main_video {
 #private > span {
     top: -10px;
     position: relative;
-}
-
-.statistics{
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.graphs{
-    width: 100%;
-    background-color: #e1e1e1;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin-bottom: 10px;
 }
